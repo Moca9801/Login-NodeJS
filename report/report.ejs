@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura de Compra</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .thanks {
+            text-align: center;
+            font-style: italic;
+            margin-top: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>SISTEMA DE GESTIÓN DE PRODUCTOS</h3>
+        <table>
+            <tr>
+                <th>Nombre:</th>
+                <td><%= name %></td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td><%= email %></td>
+            </tr>
+            <tr>
+                <th>Contacto:</th>
+                <td><%= contact %></td>
+            </tr>
+            <tr>
+                <th>Método de pago:</th>
+                <td><%= paymentMethod %></td>
+            </tr>
+        </table>
+        <h3>Detalle de productos</h3>
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Sub Total</th>
+            </tr>
+            <% if (productDetails.length > 0) { %>
+                <% productDetails.forEach(product => { %>
+                    <tr>
+                        <td><%= product.name %></td>
+                        <td><%= product.category %></td>
+                        <td><%= product.quantity %></td>
+                        <td>$<%= product.price %></td>
+                        <td>$<%= product.total %></td>
+                    </tr>
+                <% }); %>
+            <% } %>
+        </table>
+        <h3>Total: $<%= totalAmount %></h3>
+        <div class="thanks">Gracias por su compra. Le esperamos pronto.</div>
+    </div>
+</body>
+</html>
